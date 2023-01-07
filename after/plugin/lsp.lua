@@ -2,6 +2,8 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
+lsp.skip_server_setup({'rust_analyzer'})
+
 lsp.ensure_installed({
   'tsserver',
   'eslint',
@@ -70,6 +72,10 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
+
+-- Initialize rust_analyzer with rust-tools
+local rust_lsp = lsp.build_options('rust_analyzer', {})
+require('rust-tools').setup({server = rust_lsp})
 
 vim.diagnostic.config({
     virtual_text = true,

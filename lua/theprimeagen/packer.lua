@@ -52,5 +52,7 @@ return require('packer').startup(function(use)
   use("folke/zen-mode.nvim")
   use("github/copilot.vim")
 
+  use 'simrat39/rust-tools.nvim'
+  use 'mfussenegger/nvim-dap'
 end)
 
